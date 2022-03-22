@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Portlets</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!-- CSS Stylesheets -->
+  <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function myFunction() {
+          /* Get the text field */
+          var copyText = document.getElementById("myInput");
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+           /* Copy the text inside the text field */
+          navigator.clipboard.writeText(copyText.value);
+
+          /* Alert the copied text */
+          alert("Copied the text: " + copyText.value);
+        }
+    </script>
+</head>
+<body>
+  <section id="image" class="container fluid" style="padding-top:50px;text-align: center">
+    <h1> Extracting colours from image </h1>
+      <form  method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+    <img src="{{img_name}}" class="img-fluid" alt="Responsive image" style="padding-top:20px">
+  </section>
+  <section id="features" class="container fluid" style="padding-top:50px;text-align: center">
+      <h1> Features </h1>
+       <!-- Blue -->
+      <div class="container" style="width:800px;">
+          {% for item in colours %}
+          <div class="progress" style="height:40px;">
+            <div class="progress-bar"
+                 style="width:80%;height:40px;
+                 background-color: #{{item[1][0]}};color:black;">{{item[1][1]}}%</div>
+              <div style="padding-left:20px;padding-top:10px;width:20%">
+<!--                <h6> #{{item[1][0]}}</h6>-->
+                   <!-- The text field -->
+                    <input type="text" value="#{{item[1][0]}}" id="myInput" style="width:70px;color:#{{item[1][0]}}" disabled>
+                    <!-- The button used to copy the text -->
+                    <button onclick="myFunction()">Copy</button>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </section>
+</body>
+</html>
