@@ -56,8 +56,8 @@ def home():
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
     data = io.BytesIO()
-    rgb_im = im.convert('RGB')
-    rgb_im.save(data, "JPEG")
+    im = im.convert('RGB')
+    im.save(data, "JPEG")
     encoded_img_data = base64.b64encode(data.getvalue())
     image_size = data.tell()
     print(f"image size: {image_size}")
