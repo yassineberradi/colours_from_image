@@ -1,13 +1,19 @@
+import base64
 import collections
+import io
 import json
 import os
 from itertools import islice
+import tempfile
 
+import PIL
 import numpy as np
 import numpy as numpy
 from PIL import Image
 from flask import render_template, request, Flask
 from sklearn.cluster import KMeans
+from werkzeug.utils import secure_filename
+
 TOP_RESULT = 100
 app = Flask(__name__)
 
@@ -34,19 +40,24 @@ def palette(clusters):
 def home():
     image_name = ""
     if request.method == 'POST':
-        f = request.files['file']
+        file = request.files['file']
+        print(file)
         top_colors = int(request.form['top'])
         # print(top_colors)
-        image_name = f"static/images/{f.filename}"
+        image_name = f"static/images/{file.filename}"
         try:
-            f.save(image_name)
-        except IsADirectoryError:
+            im = Image.open(file)
+            # file.save(image_name)
+        except OSError or PIL.UnidentifiedImageError:
             image_name = "static/images/img.jpg"
-        im = Image.open(image_name)
+            im = Image.open(image_name)
     else:
         top_colors = 10
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
+    data = io.BytesIO()
+    im.save(data, "JPEG")
+    encoded_img_data = base64.b64encode(data.getvalue())
     im = im.resize((150, 150))
     pix = numpy.array(im)
     # img_type = type(pix)
@@ -80,7 +91,7 @@ def home():
     #     json.dump(sort_orders, fp, indent=4)
     # if image_name != "static/images/img.jpg":
     #     os.remove(image_name)
-    return render_template("index.html", colours=sort_orders, img_name=image_name)
+    return render_template("index.html", colours=sort_orders, img_data=encoded_img_data.decode('utf-8'))
 
 
 def unique_colors(img_shape, pix):
