@@ -43,11 +43,11 @@ def home():
         try:
             f.save(image_name)
         except IsADirectoryError:
-            image_name = "static/images/img.jpg"
+            image_name = "static/images/about-bg.jpg"
         im = Image.open(image_name)
     else:
         top_colors = 10
-        image_name = "static/images/img.jpg"
+        image_name = "static/images/about-bg.jpg"
         im = Image.open(image_name)
     im = im.resize((100, 100))
     pix = numpy.array(im)
@@ -80,7 +80,7 @@ def home():
     # print(f"sort_orders: {sort_orders}")
     # with open(f'top_colors.json', 'w') as fp:
     #     json.dump(sort_orders, fp, indent=4)
-    if image_name != "static/images/img.jpg":
+    if image_name != "static/images/about-bg.jpg":
         os.remove(image_name)
     return render_template("index.html", colours=sort_orders, img_name=image_name)
 
