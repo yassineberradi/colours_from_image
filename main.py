@@ -67,7 +67,7 @@ def home():
     elif 119876 < image_size < 2999992:
         top_colors = 6
     elif 40000 < image_size < 119876:
-        top_colors = 7
+        top_colors = 5
     im = im.resize((80, 80))
     pix = numpy.array(im)
     # img_type = type(pix)
