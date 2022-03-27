@@ -68,7 +68,7 @@ def home():
     sum_frequency = sum(list_unique_labels_frequency)
     new_lst = [round(i/sum_frequency * 100, 2) for i in list_unique_labels_frequency]
     # print(f"unique labels frequency percentage: {new_lst}")
-    # print(f"centers: {list_centers}")
+    print(f"centers: {list_centers}")
     colors_dict = {}
     for idx, color in enumerate(list_centers):
         rgb = (int(color[0]), int(color[1]), int(color[2]))
