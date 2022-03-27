@@ -36,7 +36,7 @@ def home():
     if request.method == 'POST':
         f = request.files['file']
         top_colors = int(request.form['top'])
-        print(top_colors)
+        # print(top_colors)
         image_name = f"static/images/{f.filename}"
         try:
             f.save(image_name)
@@ -52,12 +52,12 @@ def home():
     img_type = type(pix)
     img_shape = pix.shape
     img_dim = pix.ndim
-    print(pix)
-    print(f"image type: {img_type}; shape: {img_shape}; dim: {img_dim}")
+    # print(pix)
+    # print(f"image type: {img_type}; shape: {img_shape}; dim: {img_dim}")
     clt = KMeans(n_clusters=top_colors)
     clt.fit(pix.reshape(-1, 3))
     labels = clt.labels_.tolist()
-    print(f"labels : {labels}")
+    # print(f"labels : {labels}")
     # unique labels values
     unique_labels = np.unique(clt.labels_, axis=0, return_counts=True)
     list_unique_labels = unique_labels[0].tolist()
@@ -68,7 +68,7 @@ def home():
     sum_frequency = sum(list_unique_labels_frequency)
     new_lst = [round(i/sum_frequency * 100, 2) for i in list_unique_labels_frequency]
     # print(f"unique labels frequency percentage: {new_lst}")
-    print(f"centers: {list_centers}")
+    # print(f"centers: {list_centers}")
     colors_dict = {}
     for idx, color in enumerate(list_centers):
         rgb = (int(color[0]), int(color[1]), int(color[2]))
