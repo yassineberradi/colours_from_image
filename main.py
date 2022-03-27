@@ -68,7 +68,7 @@ def home():
     clt = KMeans(n_clusters=top_colors)
     clt.fit(pix.reshape(-1, 3))
     labels = clt.labels_.tolist()
-    # print(f"labels : {labels}")
+    print(f"labels : {labels}")
     # unique labels values
     unique_labels = np.unique(clt.labels_, axis=0, return_counts=True)
     list_unique_labels = unique_labels[0].tolist()
