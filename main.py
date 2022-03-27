@@ -42,7 +42,7 @@ def home():
     if request.method == 'POST':
         file = request.files['file']
         print(file)
-        top_colors = int(request.form['top'])
+        # top_colors = int(request.form['top'])
         # print(top_colors)
         image_name = f"static/images/{file.filename}"
         try:
@@ -58,6 +58,14 @@ def home():
     data = io.BytesIO()
     im.save(data, "JPEG")
     encoded_img_data = base64.b64encode(data.getvalue())
+    image_size = data.tell()
+    print(f"image size: {image_size}")
+    if image_size <= 119876:
+        top_colors = 9
+    elif image_size > 2999992:
+        top_colors = 5
+    elif 119876 < image_size < 2999992:
+        top_colors = 8
     im = im.resize((80, 80))
     pix = numpy.array(im)
     # img_type = type(pix)
