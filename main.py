@@ -78,8 +78,8 @@ def home():
     # print(f"sort_orders: {sort_orders}")
     # with open(f'top_colors.json', 'w') as fp:
     #     json.dump(sort_orders, fp, indent=4)
-    if image_name != "static/images/img.jpg":
-        os.remove(image_name)
+    # if image_name != "static/images/img.jpg":
+    #     os.remove(image_name)
     return render_template("index.html", colours=sort_orders, img_name=image_name)
 
 
