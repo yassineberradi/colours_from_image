@@ -44,7 +44,7 @@ def home():
             image_name = "static/images/img.jpg"
         im = Image.open(image_name)
     else:
-        top_colors = 10
+        top_colors = 5
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
     im = im.resize((150, 150))
