@@ -5,10 +5,8 @@ from itertools import islice
 
 import numpy as np
 import numpy as numpy
-import scipy as scipy
 from PIL import Image
 from flask import render_template, request, Flask
-from werkzeug.utils import secure_filename
 from sklearn.cluster import KMeans
 TOP_RESULT = 100
 app = Flask(__name__)
