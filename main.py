@@ -49,7 +49,7 @@ def home():
         top_colors = 10
         image_name = "static/images/about-bg.jpg"
         im = Image.open(image_name)
-    im = im.resize((100, 100))
+    im = im.resize((150, 150))
     pix = numpy.array(im)
     img_type = type(pix)
     img_shape = pix.shape
