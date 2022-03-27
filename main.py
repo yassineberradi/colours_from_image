@@ -47,7 +47,7 @@ def home():
         top_colors = 5
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
-    im = im.resize((150, 150))
+    im = im.resize((80, 80))
     pix = numpy.array(im)
     img_type = type(pix)
     img_shape = pix.shape
