@@ -52,13 +52,13 @@ def home():
             image_name = "static/images/img.jpg"
             im = Image.open(image_name)
     else:
-        top_colors = 10
+        top_colors = 5
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
     data = io.BytesIO()
     im.save(data, "JPEG")
     encoded_img_data = base64.b64encode(data.getvalue())
-    im = im.resize((150, 150))
+    im = im.resize((80, 80))
     pix = numpy.array(im)
     # img_type = type(pix)
     # img_shape = pix.shape
