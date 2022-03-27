@@ -61,13 +61,13 @@ def home():
     image_size = data.tell()
     print(f"image size: {image_size}")
     if image_size < 40000:
-        top_colors = 10
+        top_colors = 9
     elif image_size > 2999992:
         top_colors = 5
     elif 119876 < image_size < 2999992:
         top_colors = 7
     elif 40000 < image_size < 119876:
-        top_colors = 9
+        top_colors = 8
     im = im.resize((80, 80))
     pix = numpy.array(im)
     # img_type = type(pix)
