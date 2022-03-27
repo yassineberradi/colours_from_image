@@ -44,14 +44,14 @@ def home():
             image_name = "static/images/img.jpg"
         im = Image.open(image_name)
     else:
-        top_colors = 5
+        top_colors = 10
         image_name = "static/images/img.jpg"
         im = Image.open(image_name)
-    im = im.resize((80, 80))
+    im = im.resize((150, 150))
     pix = numpy.array(im)
-    img_type = type(pix)
-    img_shape = pix.shape
-    img_dim = pix.ndim
+    # img_type = type(pix)
+    # img_shape = pix.shape
+    # img_dim = pix.ndim
     # print(pix)
     # print(f"image type: {img_type}; shape: {img_shape}; dim: {img_dim}")
     clt = KMeans(n_clusters=top_colors)
