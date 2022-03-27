@@ -60,12 +60,14 @@ def home():
     encoded_img_data = base64.b64encode(data.getvalue())
     image_size = data.tell()
     print(f"image size: {image_size}")
-    if image_size <= 119876:
-        top_colors = 9
+    if image_size < 40000:
+        top_colors = 3
     elif image_size > 2999992:
         top_colors = 5
     elif 119876 < image_size < 2999992:
-        top_colors = 8
+        top_colors = 4
+    elif 40000 < image_size < 119876:
+        top_colors = 3
     im = im.resize((80, 80))
     pix = numpy.array(im)
     # img_type = type(pix)
